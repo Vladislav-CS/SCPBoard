@@ -1,5 +1,5 @@
 import { ChatInputCommandInteraction, EmbedBuilder, SlashCommandBuilder, SlashCommandIntegerOption, SlashCommandStringOption } from 'discord.js';
-import { getLastCacheUpdatedTime, isCacheUpdated } from '../../modules/client.js';
+import { getLastCacheUpdatedTime } from '../../modules/client.js';
 import { clearTags, removeFrameworkIfExists } from '../../utils/regex.js';
 import { getServers } from "../../utils/leaderboard.js";
 

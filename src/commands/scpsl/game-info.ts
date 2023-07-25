@@ -1,5 +1,5 @@
 import { ChatInputCommandInteraction, EmbedBuilder, SlashCommandBuilder } from "discord.js";
-import { getLastCacheUpdatedTime, getServers, isCacheUpdated } from '../../modules/client.js';
+import { getLastCacheUpdatedTime, getServers } from '../../modules/client.js';
 
 export default {
     cache: true,
