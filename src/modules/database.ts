@@ -1,4 +1,5 @@
 import { connect, Model, model, Schema } from 'mongoose';
+import { getServers } from "./clien.jst";
 
 import 'dotenv/config';
 
