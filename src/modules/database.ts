@@ -1,5 +1,5 @@
 import { connect, Model, model, Schema } from 'mongoose';
-import { getServers } from "./clien.jst";
+import { getServers } from "./client.js";
 
 import 'dotenv/config';
 
@@ -54,7 +54,7 @@ export async function run() {
                 await object.save();
             }
         }
-    }, 40000);
+    }, 180000);
 }
 
 export async function getDocumentById(id: number) {
