@@ -20,7 +20,7 @@ export default {
         const address: string = interaction.options.getString('ip') as string;
 
         if (address.indexOf(':') === -1 || address.split(':').length !== 2) {
-            await interaction.reply(readLocalizationKey(interaction.locale, TranslationKey.InvalidServer));
+            await interaction.followUp(readLocalizationKey(interaction.locale, TranslationKey.InvalidServer));
             return;
         }
 
