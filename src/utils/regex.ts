@@ -1,5 +1,5 @@
 export function clearTags(text: string): string {
-    return text.replace(/<[^>]*?>/g, '').replaceAll('█', '');
+    return text.replace(/<[^>]*?>/g, '').replaceAll('█', '').trimStart().replace(/\s+/g, ' ');
 }
 
 export function removeFrameworkIfExists(text: string): string {
