@@ -56,7 +56,7 @@ export default {
         const servers = await getServers(region, limit);
 
         if (servers.length === 0) {
-            await interaction.reply(readLocalizationKey(interaction.locale, TranslationKey.NoServers));
+            await interaction.followUp(readLocalizationKey(interaction.locale, TranslationKey.NoServers));
             return;
         }
 
@@ -71,7 +71,7 @@ export default {
             title = clearTags(title);
 
             title = title.split(' ').slice(0, 5).join(' ');
-            description += `\n${i <= 2 ? '👑 ' : ''}**#${i + 1}** ${title} [${server.ip}:${server.port}]\n`
+            description += `\n${i <= 2 ? '👑 ' : ''}**#${i + 1}** ${title ?? "????????"} [${server.ip}:${server.port}]\n`
         }
 
         const embed = new EmbedBuilder()
