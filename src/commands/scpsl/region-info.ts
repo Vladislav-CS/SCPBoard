@@ -1,5 +1,6 @@
 import { ChatInputCommandInteraction, EmbedBuilder, SlashCommandBuilder, SlashCommandStringOption } from "discord.js";
 import { getLastCacheUpdatedTime, getServersByRegion } from '../../modules/client.js';
+import { readLocalizationKey, TranslationKey } from "../../modules/localization.js";
 
 export default {
     cache: true,
@@ -43,7 +44,7 @@ export default {
         const servers = getServersByRegion(regionChosen);
 
         if (!servers || servers.length === 0) {
-            await interaction.reply(`Region ${regionChosen} not found.`);
+            await interaction.reply(readLocalizationKey(interaction.locale, TranslationKey.RegionNotFound).replace('$0', regionChosen));
             return;
         }
 
@@ -83,17 +84,17 @@ export default {
         }
 
         const embed = new EmbedBuilder()
-            .setTitle("Region Info")
+            .setTitle(readLocalizationKey(interaction.locale, TranslationKey.RegionInfo))
             .addFields(
-                { name: 'Servers', value: region.servers.toString(), inline: true },
-                { name: 'Players', value: `${region.players}/${region.maxPlayers}`, inline: true },
-                { name: 'Country', value: regionChosen },
-                { name: 'Friendly Fire', value: region.friendlyFire.toString(), inline: true },
-                { name: 'Vanilla', value: region.vanilla.toString(), inline: true },
-                { name: 'Whitelisted', value: region.whitelisted.toString() },
+                { name: readLocalizationKey(interaction.locale, TranslationKey.Servers), value: region.servers.toString(), inline: true },
+                { name: readLocalizationKey(interaction.locale, TranslationKey.Players), value: `${region.players}/${region.maxPlayers}`, inline: true },
+                { name: readLocalizationKey(interaction.locale, TranslationKey.Country), value: regionChosen },
+                { name: readLocalizationKey(interaction.locale, TranslationKey.FriendlyFire), value: region.friendlyFire.toString(), inline: true },
+                { name: readLocalizationKey(interaction.locale, TranslationKey.Vanilla), value: region.vanilla.toString(), inline: true },
+                { name: readLocalizationKey(interaction.locale, TranslationKey.Whitelisted), value: region.whitelisted.toString() },
             )
-            .setColor('Orange')
-            .setFooter({ text: `Cache updated ${getLastCacheUpdatedTime()} seconds ago` })
+            .setColor('#FEE75C')
+            .setFooter({ text: readLocalizationKey(interaction.locale, TranslationKey.CacheUpdated).replace('$0', getLastCacheUpdatedTime().toString()) })
             .setTimestamp();
 
         await interaction.reply({ embeds: [embed] });
