@@ -1,5 +1,5 @@
 {
-    "CONTRIBUTE": "If you want to contribute SCPBoard, you can update or add your language to this bot! Click [here](<https://github.com/Vladislav-Antipov/SCPBoard>) to read README.",
+    "CONTRIBUTE": "Pokud chcete přispět k SCPBoard, můžete přidat nebo aktualizovat jazyk tomuto robotovi! Klikněte [here](<https://github.com/Vladislav-Antipov/SCPBoard>) abyste si přečetly informace.",
     "CONTRIBUTORS": "Přispěvatelé",
     "GAME_INFO": "Info o hře",
     "COMMUNITY_INFO": "Info o komunitě",
@@ -8,8 +8,8 @@
     "TOTAL_SERVERS": "Celkem serverů",
     "PLAYERS": "Hráči",
     "VANILLA": "Vanilla",
-    "GREATER_SERVERS": "Více serverů",
-    "LESS_SERVERS": "Méně serverů",
+    "GREATER_SERVERS": "Země s více servery",
+    "LESS_SERVERS": "Země s méně servery",
     "MODDED": "Módované",
     "GREATER_COMMUNITIES": "Více komunit",
     "LESS_COMMUNITIES": "Méně komunit",
