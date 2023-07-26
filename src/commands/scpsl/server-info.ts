@@ -2,7 +2,7 @@ import { ChatInputCommandInteraction, EmbedBuilder, SlashCommandBuilder } from '
 import { getLastCacheUpdatedTime, getServerByIPAndPort } from '../../modules/client.js';
 import { getFramework } from '../../utils/regex.js';
 import { getDocumentById } from "../../modules/database.js";
-import { getPlace } from "../../utils/leaderboard.js";
+import { getPlace, getPlaces } from "../../utils/leaderboard.js";
 import { readLocalizationKey, TranslationKey } from '../../modules/localization.js';
 
 export default {
@@ -60,6 +60,8 @@ export default {
             hours += new Date(record.time).getHours();
         }
 
+        const places = await getPlaces(server.serverId, server.isoCode);
+
         const embed = new EmbedBuilder()
             .setTitle(readLocalizationKey(interaction.locale, TranslationKey.ServerInfo))
             .addFields(
@@ -72,7 +74,7 @@ export default {
                 { name: readLocalizationKey(interaction.locale, TranslationKey.Framework), value: getFramework(server.info) },
                 { name: readLocalizationKey(interaction.locale, TranslationKey.Players), value: server.players, inline: true },
                 { name: readLocalizationKey(interaction.locale, TranslationKey.ScpListLink), value: `[${server.serverId}](https://scplist.kr/servers/${server.serverId})`, inline: true },
-                { name: readLocalizationKey(interaction.locale, TranslationKey.PlaceTop), value: `${await getPlace(server.serverId)} | ${await getPlace(server.serverId, server.isoCode)}` },
+                { name: readLocalizationKey(interaction.locale, TranslationKey.PlaceTop), value: `${places[0]} | ${places[1]}` },
                 { name: readLocalizationKey(interaction.locale, TranslationKey.MaxPlayers), value: maxPlayers.toString(), inline: true },
                 { name: readLocalizationKey(interaction.locale, TranslationKey.AveragePlayers), value: Math.round(players / document.records.length).toString(), inline: true },
                 { name: readLocalizationKey(interaction.locale, TranslationKey.PeakPlayers), value: `${Math.round(hours / maxPlayersRecords.length)}:00`, inline: true },
