@@ -36,27 +36,3 @@ export async function getPlace(id: number, region: string | null = null): Promis
 
     return place;
 }
-
-export async function getPlaces(id: number, region: string): Promise<[number, number]> {
-    const servers = await getServers(region);
-    const regionServers = servers.filter(server => server.isoCode === region);
-
-    let gamePlace = -1;
-    let regionPlace = -1;
-
-    for (let i = 0; i < servers.length; i++) {
-        if (servers[i].serverId === id) {
-            gamePlace = i + 1;
-            break;
-        }
-    }
-
-    for (let i = 0; i < regionServers.length; i++) {
-        if (regionServers[i].serverId === id) {
-            regionPlace = i + 1;
-            break;
-        }
-    }
-
-    return [gamePlace, regionPlace];
-}
