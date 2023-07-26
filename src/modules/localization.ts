@@ -1,6 +1,7 @@
 import { existsSync, mkdirSync, readdirSync, readFileSync } from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
+import { EmbedField } from "discord.js";
 
 const localizationsPath: string = `${dirname(fileURLToPath(import.meta.url))}/../locales`;
 const defaultLanguageCode: string = 'en-US';
@@ -22,6 +23,7 @@ interface ILocale {
 export enum TranslationKey {
     None,
     Contribute = 'CONTRIBUTE',
+    Contributors = 'CONTRIBUTORS',
     GameInfo = 'GAME_INFO',
     CommunityInfo = 'COMMUNITY_INFO',
     RegionInfo = 'REGION_INFO',
@@ -142,12 +144,12 @@ export function readLocalizationKey(languageCode: string, key: TranslationKey, d
     return locale.keys[key.toString()];
 }
 
-export function getTranslatorsMessage(): string {
-    let message: string = '';
+export function getContributors(): EmbedField[] {
+    const fields: EmbedField[] = [];
 
     currentLocales.forEach(locale => {
-        message += `**${locale.manifest.language_code}**:\n${locale.manifest.authors.join('\n')}\n\n`;
+        fields.push({ name: locale.manifest.language_code, value: locale.manifest.authors.join('\n'), inline: false });
     });
 
-    return message;
+    return fields;
 }

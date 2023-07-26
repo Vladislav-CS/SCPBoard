@@ -1,5 +1,6 @@
 {
-    "CONTRIBUTE": "If you want to contribute SCPBoard, you can update or add your language to this bot! Click [here](<https://github.com/Vladislav-Antipov/SCPBoard>) to read README.\nCurrent translators:\n\n",
+    "CONTRIBUTE": "If you want to contribute SCPBoard, you can update or add your language to this bot! Click [here](<https://github.com/Vladislav-Antipov/SCPBoard>) to read README.",
+    "CONTRIBUTORS": "Contributors",
     "GAME_INFO": "Game info",
     "COMMUNITY_INFO": "Community info",
     "REGION_INFO": "Region info",
