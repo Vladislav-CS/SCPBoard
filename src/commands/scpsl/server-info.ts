@@ -32,14 +32,14 @@ export default {
         const server = getServerByIPAndPort(ip, port);
 
         if (!server) {
-            await interaction.reply(readLocalizationKey(interaction.locale, TranslationKey.ServerNotFound).replace('$0', address));
+            await interaction.followUp(readLocalizationKey(interaction.locale, TranslationKey.ServerNotFound).replace('$0', address));
             return;
         }
 
         const document = await getDocumentById(server.serverId);
 
         if (!document || document.records.length === 0) {
-            await interaction.reply(readLocalizationKey(interaction.locale, TranslationKey.NoRecords));
+            await interaction.followUp(readLocalizationKey(interaction.locale, TranslationKey.NoRecords));
             return;
         }
 
