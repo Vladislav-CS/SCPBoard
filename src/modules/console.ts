@@ -12,7 +12,7 @@ export function run() {
         const regex = /[\w-]*\.(\w*):(\d+)(?=:\d+)/;
         const match = regex.exec(e.stack!.split("\n")[2]);
         const file = match !== null ? match![0] : '';
-        
+
         nativeLog(Chalk.hex('#496DCB')(`[${date}]`) + Chalk.hex('#F5C637')(' [LOG]') + Chalk.hex('#FFCE73')(` [${file}]`) + Chalk.hex('#FFFFFF')(` ${data}`));
     }
 

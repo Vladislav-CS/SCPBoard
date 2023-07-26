@@ -127,7 +127,7 @@ export function run() {
     } else {
         console.log(`Default locale with code ${defaultLanguageCode} is missing. Default translations will be used instead.`);
     }
-    
+
     console.log(`Successfully loaded ${currentLocales.length} locales.`)
 }
 

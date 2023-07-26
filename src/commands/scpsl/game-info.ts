@@ -1,6 +1,6 @@
 import { ChatInputCommandInteraction, EmbedBuilder, SlashCommandBuilder } from "discord.js";
 import { getLastCacheUpdatedTime, getServers } from '../../modules/client.js';
-import { TranslationKey, readLocalizationKey } from "../../modules/localization.js";
+import { readLocalizationKey, TranslationKey } from "../../modules/localization.js";
 
 export default {
     cache: true,

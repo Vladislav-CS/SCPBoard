@@ -1,5 +1,5 @@
 import { ChatInputCommandInteraction, SlashCommandBuilder } from "discord.js";
-import { TranslationKey, getTranslatorsMessage, readLocalizationKey } from "../../modules/localization.js";
+import { getTranslatorsMessage, readLocalizationKey, TranslationKey } from "../../modules/localization.js";
 
 export default {
     data: new SlashCommandBuilder()
