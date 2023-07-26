@@ -1,7 +1,8 @@
 import { existsSync, mkdirSync, readdirSync, readFileSync } from 'fs';
 import { fileURLToPath } from 'url';
+import { dirname } from 'path';
 
-const localizationsPath: string = `${fileURLToPath(import.meta.url)}/../../locales`;
+const localizationsPath: string = `${dirname(fileURLToPath(import.meta.url))}/../locales`;
 const defaultLanguageCode: string = 'en-US';
 
 interface IManifest {
