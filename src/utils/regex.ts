@@ -2,9 +2,12 @@ export function clearTags(text: string): string {
     return text.replace(/<[^>]*?>/g, '').replaceAll('█', '').trimStart().replace(/\s+/g, ' ');
 }
 
+export function removeFrameworkIfExists(text: string): string {
+    return text.includes('<color=#00000000><size=1>') ? text.substring(0, text.indexOf('<color=#00000000><size=1>')) : text;
+}
+
 export function getFramework(text: string): string {
-    const matches = text.match(/[a-zA-Z]+ \d+\.\d+\.\d+/g);
-    return matches ? matches[0] : 'None';
+    return text.includes('<color=#00000000><size=1>') ? clearTags(text.substring(text.indexOf('<color=#00000000><size=1>'))) : 'None';
 }
 
 export function formatDate(date: Date): string {
