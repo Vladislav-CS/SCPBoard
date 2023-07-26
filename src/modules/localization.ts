@@ -135,7 +135,6 @@ export function readLocalizationKey(languageCode: string, key: TranslationKey, d
     const locale = currentLocales.find(l => l.manifest.language_code === languageCode);
 
     if (!locale || !(key in locale.keys)) {
-        console.log(`${defaultLocale !== undefined} | ${defaultLocale !== undefined && (key in defaultLocale.keys)} | \n${defaultLocale.keys}`);
         return defaultLocale !== undefined && (key in defaultLocale.keys) ? defaultLocale.keys[key.toString()] : defaultTranslation;
     }
 
