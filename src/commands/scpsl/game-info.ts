@@ -1,5 +1,6 @@
 import { ChatInputCommandInteraction, EmbedBuilder, SlashCommandBuilder } from "discord.js";
 import { getLastCacheUpdatedTime, getServers } from '../../modules/client.js';
+import { TranslationKey, readLocalizationKey } from "../../modules/localization.js";
 
 export default {
     cache: true,
@@ -66,22 +67,22 @@ export default {
         const lessProjects = Object.keys(projects).reduce((a, b) => projects[a].length < projects[b].length ? a : b);
 
         const embed = new EmbedBuilder()
-            .setTitle("Game Info")
+            .setTitle(readLocalizationKey(interaction.locale, TranslationKey.GameInfo))
             .addFields(
-                { name: 'Servers', value: game.servers.toString(), inline: true },
-                { name: 'Players', value: `${game.players}/${game.maxPlayers}`, inline: true },
-                { name: 'Vanilla', value: game.vanilla.toString() },
-                { name: 'Greater servers', value: `${greaterServers} (${servers[greaterServers]})`, inline: true },
-                { name: 'Less servers', value: `${lessServers} (${servers[lessServers]})`, inline: true },
-                { name: 'Modded', value: game.modded.toString() },
-                { name: 'Greater projects', value: `${greaterProjects} (${projects[greaterProjects].length})`, inline: true },
-                { name: 'Less projects', value: `${lessProjects} (${projects[lessProjects].length})`, inline: true },
-                { name: 'Whitelisted', value: game.whitelisted.toString() },
-                { name: 'Friendly Fire', value: game.friendlyFire.toString(), inline: true },
-                { name: 'Private Beta', value: game.privateBeta.toString(), inline: true },
+                { name: readLocalizationKey(interaction.locale, TranslationKey.Servers), value: game.servers.toString(), inline: true },
+                { name: readLocalizationKey(interaction.locale, TranslationKey.Players), value: `${game.players}/${game.maxPlayers}`, inline: true },
+                { name: readLocalizationKey(interaction.locale, TranslationKey.Vanilla), value: game.vanilla.toString() },
+                { name: readLocalizationKey(interaction.locale, TranslationKey.GreaterServers), value: `${greaterServers} (${servers[greaterServers]})`, inline: true },
+                { name: readLocalizationKey(interaction.locale, TranslationKey.LessServers), value: `${lessServers} (${servers[lessServers]})`, inline: true },
+                { name: readLocalizationKey(interaction.locale, TranslationKey.Modded), value: game.modded.toString() },
+                { name: readLocalizationKey(interaction.locale, TranslationKey.GreaterCommunities), value: `${greaterProjects} (${projects[greaterProjects].length})`, inline: true },
+                { name: readLocalizationKey(interaction.locale, TranslationKey.LessCommunities), value: `${lessProjects} (${projects[lessProjects].length})`, inline: true },
+                { name: readLocalizationKey(interaction.locale, TranslationKey.Whitelisted), value: game.whitelisted.toString() },
+                { name: readLocalizationKey(interaction.locale, TranslationKey.FriendlyFire), value: game.friendlyFire.toString(), inline: true },
+                { name: readLocalizationKey(interaction.locale, TranslationKey.PrivateBeta), value: game.privateBeta.toString(), inline: true },
             )
-            .setColor('Orange')
-            .setFooter({ text: `Cache updated ${getLastCacheUpdatedTime()} seconds ago` })
+            .setColor('#FEE75C')
+            .setFooter({ text: readLocalizationKey(interaction.locale, TranslationKey.CacheUpdated).replace('$0', getLastCacheUpdatedTime().toString()) })
             .setTimestamp();
 
         await interaction.reply({ embeds: [embed] });

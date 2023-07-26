@@ -2,6 +2,7 @@ import { ChatInputCommandInteraction, EmbedBuilder, SlashCommandBuilder, SlashCo
 import { getLastCacheUpdatedTime } from '../../modules/client.js';
 import { clearTags, removeFrameworkIfExists } from '../../utils/regex.js';
 import { getServers } from "../../utils/leaderboard.js";
+import { readLocalizationKey, TranslationKey } from '../../modules/localization.js';
 
 export default {
     cache: true,
@@ -55,7 +56,7 @@ export default {
         const servers = await getServers(region, limit);
 
         if (servers.length === 0) {
-            await interaction.reply('No servers were found');
+            await interaction.reply(readLocalizationKey(interaction.locale, TranslationKey.NoServers));
             return;
         }
 
@@ -74,10 +75,10 @@ export default {
         }
 
         const embed = new EmbedBuilder()
-            .setTitle(`Leaderboard ${region ?? "the whole game"}`)
+            .setTitle(readLocalizationKey(interaction.locale, TranslationKey.Leaderboard) + ` ${region ?? readLocalizationKey(interaction.locale, TranslationKey.WholeGame)}`)
             .setDescription(description)
-            .setColor('Orange')
-            .setFooter({ text: `Cache updated ${getLastCacheUpdatedTime()} seconds ago` })
+            .setColor('#FEE75C')
+            .setFooter({ text: readLocalizationKey(interaction.locale, TranslationKey.CacheUpdated).replace('$0', getLastCacheUpdatedTime().toString()) })
             .setTimestamp();
 
         await interaction.followUp({ embeds: [embed] });

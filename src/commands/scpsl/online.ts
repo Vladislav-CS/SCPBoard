@@ -1,5 +1,6 @@
 import { ChatInputCommandInteraction, SlashCommandBuilder } from 'discord.js';
 import { getDocumentById } from "../../modules/database.js";
+import { readLocalizationKey, TranslationKey } from '../../modules/localization.js';
 
 export default {
     data: new SlashCommandBuilder()
@@ -17,7 +18,7 @@ export default {
         const document = await getDocumentById(interaction.options.getInteger('server-id') as number);
 
         if (!document || document.records.length === 0) {
-            await interaction.reply('There are no records of this server');
+            await interaction.reply(readLocalizationKey(interaction.locale, TranslationKey.NoRecords));
             return;
         }
 
@@ -41,6 +42,6 @@ export default {
             }
         }
 
-        await interaction.reply(`The closet record: <t:${Math.round(closeRecord.time / 1000)}>. Players at that moment: ${closeRecord.players}`);
+        await interaction.reply(readLocalizationKey(interaction.locale, TranslationKey.LastRecord).replace('$0', Math.round(closeRecord.time / 1000).toString()).replace('$1', closeRecord.players.toString()));
     },
 }

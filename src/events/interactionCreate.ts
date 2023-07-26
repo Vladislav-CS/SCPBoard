@@ -1,5 +1,6 @@
 import { CommandInteraction, Events } from "discord.js";
 import { isCacheUpdated } from "../modules/client.js";
+import { readLocalizationKey, TranslationKey } from "../modules/localization.js";
 
 export default {
     name: Events.InteractionCreate,
@@ -12,7 +13,7 @@ export default {
         }
 
         if (command.cache && !isCacheUpdated()) {
-            await interaction.reply('Cache is not updated, wait about 30 seconds.');
+            await interaction.reply(readLocalizationKey(interaction.locale, TranslationKey.CacheNotUpdated));
             return;
         }
 
@@ -20,13 +21,12 @@ export default {
             await command.execute(interaction);
         } catch (error) {
             if (interaction.replied || interaction.deferred) {
-                await interaction.followUp({ content: 'There was an error while executing this command, please try again!' });
+                await interaction.followUp({ content: readLocalizationKey(interaction.locale, TranslationKey.CommandError) });
             } else {
-                await interaction.reply({ content: 'There was an error while executing this command, please try again!' });
+                await interaction.reply({ content: readLocalizationKey(interaction.locale, TranslationKey.CommandError) });
             }
 
-            console.error(`Error executing ${interaction.commandName}`);
-            console.error(error);
+            console.error(`Error executing ${interaction.commandName}\n${error}`);
         }
     },
 }
