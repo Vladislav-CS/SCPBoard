@@ -6,8 +6,6 @@ export default {
         .setName('contribute')
         .setDescription('Displays information about how to contribute this bot'),
     async execute(interaction: ChatInputCommandInteraction) {
-        let answer = readLocalizationKey(interaction.locale, TranslationKey.Contribute, "NO_TRANSLATION") + getTranslatorsMessage();
-
-        await interaction.reply(answer);
+        await interaction.reply(readLocalizationKey(interaction.locale, TranslationKey.Contribute) + getTranslatorsMessage());
     }
 }

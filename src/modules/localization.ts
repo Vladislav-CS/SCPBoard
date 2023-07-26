@@ -66,7 +66,7 @@ export enum TranslationKey {
 }
 
 let currentLocales: ILocale[] = [];
-let defaultLocale:ILocale;
+let defaultLocale: ILocale;
 
 function validateJsonFile<T extends object>(data: T | null, schema: T): boolean {
     return data !== null && Object.keys(schema).every((key) => (key in data));
