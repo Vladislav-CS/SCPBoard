@@ -15,11 +15,11 @@ List of available commands:
 * online
 
 You can add me [here](https://discord.com/api/oauth2/authorize?client_id=1131893000298045560&permissions=0&scope=bot%20applications.commands)!
-# For translators 🗒️
+# How to contribute 🗒️
 If you would like to update or add your language, you can do that easily:
 1. Fork this repository.
 2. Make a translation in `/src/locales/` based on other translations.
 3. Make a Pull Request with your changes.
 4. Done! You will be displayed in contributor list.
-# Bug-report 🔨
+# Report a bug 🔨
 if you found a bug, DM @vladislav_antipov on discord.
