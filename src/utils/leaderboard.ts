@@ -1,13 +1,10 @@
-import { getDocuments } from "../modules/database.js";
+import { getDocuments, getDocumentsByRegion } from "../modules/database.js";
 import { getServerById, IServer } from "../modules/client.js";
 
-export async function getServers(region: string | null, limit: number = 0): Promise<IServer[]> {
+export async function getServers(region: string | null = null, limit: number = 0): Promise<IServer[]> {
     const servers: { [id: number]: number } = {};
 
-    for (const document of (await getDocuments()).filter(server => getServerById(server._id))) {
-        if (region !== null && document.isoCode !== region)
-            continue;
-
+    for await (const document of await (region ? getDocumentsByRegion(region) : getDocuments())) {
         for (const record of document.records) {
             if (Object.keys(servers).includes(document._id.toString())) {
                 servers[document._id] += record.players;

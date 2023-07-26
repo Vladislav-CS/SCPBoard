@@ -64,3 +64,7 @@ export async function getDocumentById(id: number) {
 export async function getDocuments() {
     return Server.find({});
 }
+
+export async function getDocumentsByRegion(isoCode: string) {
+    return Server.find({ isoCode: isoCode });
+}
