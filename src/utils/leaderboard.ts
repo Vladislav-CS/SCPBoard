@@ -5,6 +5,9 @@ export async function getServers(region: string | null = null, limit: number = 0
     const servers: { [id: number]: number } = {};
 
     for await (const document of await (region ? getDocumentsByRegion(region) : getDocuments())) {
+        if (!getServerById(document._id))
+            continue;
+
         for (const record of document.records) {
             if (Object.keys(servers).includes(document._id.toString())) {
                 servers[document._id] += record.players;
