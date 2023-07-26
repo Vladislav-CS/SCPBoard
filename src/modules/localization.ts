@@ -10,7 +10,6 @@ interface IManifest {
 }
 
 interface ILocalization {
-    CONTRIBUTE: string;
     [key: string]: string;
 }
 
