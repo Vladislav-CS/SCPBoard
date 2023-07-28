@@ -42,5 +42,5 @@
     "INVALID_COMMUNITY": "Se proporcionó una dirección IP no válida o la comunidad no existe.",
     "INVALID_SERVER": "Se proporcionó una dirección IP no válida o el servidor no existe.",
     "CACHE_NOT_UPDATED": "La cache no está actualizada, esperá unos 30 segundos.",
-    "COMMAND_ERROR": "There was an error while executing this command, please try again or contact devs!"
+    "COMMAND_ERROR": "Hubo un error al ejecutar este comando, intentá otra vez o comunicate con los desarrolladores."
 }
