@@ -12,7 +12,7 @@ declare module 'discord.js' {
     }
 }
 
-const intents: IntentsBitField[] = [];
+const intents: IntentsBitField = new IntentsBitField();
 const partials: Partials[] = [];
 
 const client = new Client({ intents: intents, partials: partials });
