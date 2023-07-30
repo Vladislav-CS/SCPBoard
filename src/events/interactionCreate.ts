@@ -20,12 +20,6 @@ export default {
         try {
             await command.execute(interaction);
         } catch (error) {
-            if (interaction.replied || interaction.deferred) {
-                await interaction.followUp({ content: readLocalizationKey(interaction.locale, TranslationKey.CommandError) });
-            } else {
-                await interaction.reply({ content: readLocalizationKey(interaction.locale, TranslationKey.CommandError) });
-            }
-
             console.error(`Error executing ${interaction.commandName}\n${error}`);
         }
     },
