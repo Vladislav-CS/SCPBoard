@@ -7,7 +7,8 @@ export function removeFrameworkIfExists(text: string): string {
 }
 
 export function getFramework(text: string): string {
-    return text.includes('<color=#00000000><size=1>') ? clearTags(text.substring(text.indexOf('<color=#00000000><size=1>'))) : 'None';
+    const matches = text.match(/[a-zA-Z]+ \d+\.\d+\.\d+/g);
+    return matches ? matches[0] : 'None';
 }
 
 export function formatDate(date: Date): string {
